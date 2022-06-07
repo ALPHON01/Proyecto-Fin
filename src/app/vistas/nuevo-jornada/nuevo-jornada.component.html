@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <h3>Nueva Jornada</h3>
+  </div>
+  <div class="row">
+    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
+  </div>
+  <div class="row">
+    <div class="alert alert-danger" *ngIf="errorStatus">
+      <p>{{errorMsg}}</p>
+    </div>
+  </div>
+
+  <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
+
+    <div class="form-group row">
+      <div class="col">
+        <label for="name">Equipo Local</label>
+        <select formControlName="equipo_local" class="form-select" id="">
+          <option *ngFor="let equipo of equipos" value={{equipo.id}} >{{equipo.nombre}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="name">Equipo Visitante</label>
+        <select formControlName="equipo_visitante" class="form-select" id="">
+          <option *ngFor="let equipo of equipos" value={{equipo.id}} >{{equipo.nombre}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+
+
+        <div class="col">
+          <label for="name">Fecha  (YYYY-MM-DD)</label>
+          <input type="text" formControlName="fecha" class="form-control">
+        </div>
+        <div class="col">
+          <label for="name">Estado</label>
+          <select formControlName="estado" class="form-select" id="">
+            <option value="0" >En Juego</option>
+            <option value="1" >Finalizado</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="name">Resultado</label>
+          <select formControlName="resultado_id" class="form-select" id="">
+            <option value="1" >1</option>
+            <option value="2" >X</option>
+            <option value="3" >2</option>
+          </select>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary mt-1" type="submit">Guardar</button>
+      </div>
+
+    </div>
+
+
+  </form>
+
+</div>
+
+<app-footer></app-footer>

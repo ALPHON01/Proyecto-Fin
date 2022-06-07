@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="container">
+  <div>
+    <h3>Editar Usuario</h3>
+  </div>
+  <!-- Remind Passowrd -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button>
+    </div>
+  </div>
+  <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+    <input type="hidden" formControlName="id" class="form-control">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" formControlName="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="name">Apellidos</label>
+      <input type="text" formControlName="surname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" class="form-control">
+    </div>
+    <div class="form-group row">
+      <div class="col">
+        <label for="name">Fecha Nacimiento</label>
+        <input type="text" formControlName="fecha_nac" class="form-control">
+      </div>
+      <div class="col">
+        <label for="name">Contraseña</label>
+        <input type="password" formControlName="password" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-4">
+        <label for="role">Role</label>
+        <select formControlName="role_id" class="form-select" id="">
+          <option value="1" >Admin</option>
+          <option value="2">Entrenador</option>
+          <option value="3" >Jugador</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary mt-1" type="submit">Guardar</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-danger mt-1" type="button" (click)="eliminar()">Borrar</button>
+      </div>
+    </div>
+
+
+
+  </form>
+
+</div>
+<app-footer></app-footer>

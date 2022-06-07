@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <h3>Nuevo entrenamiento</h3>
+  </div>
+  <div class="row">
+
+    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
+
+
+  </div>
+  <div class="row">
+    <div class="alert alert-danger" *ngIf="errorStatus">
+      <p>{{errorMsg}}</p>
+    </div>
+  </div>
+  <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
+    <input type="hidden" formControlName="id" class="form-control">
+
+
+    <div class="form-group row">
+      <div class="col">
+        <label for="liga">Duración (horas)</label>
+
+        <select class="form-control" formControlName="duracion" >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="col" *ngIf="userHead == 3">
+        <label for="entrenador">Entrenador</label>
+        <select formControlName="entrenador_id" class="form-select" id="">
+          <option *ngFor="let entrenador of entrenadores" value={{entrenador.id}} >{{entrenador.name}} {{entrenador.surname}}</option>
+        </select>
+      </div>
+      <div class="col" *ngIf="userHead == 2">
+        <label for="jugador_id">Jugador</label>
+        <select formControlName="jugador_id" class="form-select" id="">
+          <option *ngFor="let jugador of jugadores" value={{jugador.id}} >{{jugador.name}} {{jugador.surname}}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary mt-1" type="submit">Guardar</button>
+      </div>
+
+    </div>
+
+
+  </form>
+</div>
+<app-footer></app-footer>

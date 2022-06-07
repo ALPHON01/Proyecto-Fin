@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <h3>Marcadores {{this.estaLiga.name}}</h3>
+  </div>
+  <div class="row">
+    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Equipo</th>
+          <th>Victorias</th>
+          <th>Derrotas</th>
+          <th>Empates</th>
+          <th>Partidos Jugados</th>
+          <th>Puntos a favor</th>
+          <th>Puntos en contra</th>
+          <th>Puntos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let marcas of marcadores">
+          <td>{{marcas.team.displayName}}</td>
+
+          <td>{{marcas.stats[0].value}}</td>
+          <td>{{marcas.stats[1].value}}</td>
+          <td>{{marcas.stats[2].value}}</td>
+
+          <td>{{marcas.stats[3].value}}</td>
+          <td>{{marcas.stats[4].value}}</td>
+          <td>{{marcas.stats[5].value}}</td>
+          <td>{{marcas.stats[6].value}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>

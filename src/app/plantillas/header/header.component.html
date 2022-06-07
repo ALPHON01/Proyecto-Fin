@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <a  class="navbar-brand">
+          <img src="favicon.ico" height="28" alt="CoolBrand">
+      </a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav" *ngIf="userRole==0"></div>
+          <div class="navbar-nav" *ngIf="userRole==1">
+            <a class="nav-item nav-link active" *ngIf="logUser">{{logUser.name}}</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listarUsuarios()" >Usuarios</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listarSolicitudes()" >Solicitudes</a>
+            <a class="nav-item nav-link active" *ngIf="logUser" (click)="listarEquipos()">Equipos</a>
+            <a class="nav-item nav-link active" *ngIf="logUser" (click)="listarJornadas()">Jornadas</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listadoApi()">En directo</a>
+
+          </div>
+
+          <div class="navbar-nav" *ngIf="userRole==2">
+            <a  class="nav-item nav-link active" *ngIf="logUser">{{logUser.name}}</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser"(click)="misEquipos()">Mis Equipos</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="misEntrenamientos()">Entrenamientos</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listarJornadas()">Jornadas</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listadoApi()">En directo</a>
+
+          </div>
+          <div class="navbar-nav" *ngIf="userRole==3">
+            <a  class="nav-item nav-link active" *ngIf="logUser">{{logUser.name}}</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="misEquipos()">Mis Equipos</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="buscarEquipos()">Buscar Equipo</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="misEntrenamientos()">Mis Entrenamientos</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listarJornadas()">Jornadas</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listadoApi()">En directo</a>
+          </div>
+          <div class="navbar-nav ms-auto">
+
+              <a  class="nav-item nav-link active" (click)="logOut()">Salir</a>
+          </div>
+      </div>
+  </div>
+</nav>

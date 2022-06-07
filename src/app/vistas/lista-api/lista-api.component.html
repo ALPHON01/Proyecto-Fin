@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <h3>Listado de Ligas</h3>
+  </div>
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Liga</th>
+
+          <th>Datos última temporada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let liga of ligas">
+          <td>{{liga.id}}</td>
+          <td>
+            <img src={{liga.logos.light}} alt="" width="20%" height="20%" class="img-thumbnail" alt="img-thumbnail">
+            {{liga.name}}
+          </td>
+
+
+          <td>
+            <button type="button" class="btn btn-success" (click)="getApiInfo(liga.id)">Acceder a datos</button>
+          </td>
+
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+<app-footer></app-footer>

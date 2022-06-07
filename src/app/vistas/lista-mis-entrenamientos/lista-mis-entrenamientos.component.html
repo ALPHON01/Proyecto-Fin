@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <h3>Listado Entrenamientos</h3>
+  </div>
+  <div class="row">
+
+    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
+    <div class="col"><button class="btn btn-primary" (click)="nuevoEntrenamiento()">Nuevo Entrenamiento</button></div>
+
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Jugador_id</th>
+          <th>Entrenador_id</th>
+          <th>Duración (horas)</th>
+          <th>Acción</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entrenamiento of entrenamientos">
+          <td>{{entrenamiento.id}}</td>
+          <td>{{entrenamiento.jugador_id}}</td>
+          <td>{{entrenamiento.entrenador_id}}</td>
+          <td>{{entrenamiento.duracion}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="eliminar(entrenamiento)" >Eliminar</button>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-danger" *ngIf="errorStatus">
+    <p>{{errorMsg}}</p>
+  </div>
+</div>
+<app-footer></app-footer>

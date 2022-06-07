@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="container mb-1">
+  <div class="row">
+    <h3>Listado de usuarios</h3>
+  </div>
+  <div class="row">
+    <div class="col"><button class="btn btn-primary" (click)="nuevoUsuario()">Nuevo Usuario</button></div>
+    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
+
+
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>F. Nacimiento</th>
+          <th>Role</th>
+          <th style="width: 36px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.name}}</td>
+          <td>{{usuario.surname}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.fecha_nac}}</td>
+          <td>{{usuario.role_id}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="editarUsuario(usuario.id)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <app-footer></app-footer>
