@@ -15,16 +15,22 @@
           <th>Derrotas</th>
           <th>Empates</th>
           <th>Partidos Jugados</th>
-          <th>Puntos a favor</th>
-          <th>Puntos en contra</th>
+          <th>Goles a favor</th>
+          <th>Goles en contra</th>
           <th>Puntos</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let marcas of marcadores">
-          <td>{{marcas.team.displayName}}</td>
+          <td>
+            <img src={{marcas.team.logos[0].href}} width="10%" alt="">
+            {{marcas.team.displayName}}
 
-          <td>{{marcas.stats[0].value}}</td>
+          </td>
+
+          <td>
+            {{marcas.stats[0].value}}
+          </td>
           <td>{{marcas.stats[1].value}}</td>
           <td>{{marcas.stats[2].value}}</td>
 

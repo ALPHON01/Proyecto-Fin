@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { from } from 'rxjs';
 import { ResponseI } from 'src/app/modelos/response.interface';
 import { AlertasService } from 'src/app/servicios/alertas/alertas.service';
+import { ListaUsuariosI } from 'src/app/modelos/listaUsuario.interface';
 
 @Component({
   selector: 'app-editar',
@@ -19,7 +20,8 @@ export class EditarComponent implements OnInit {
 
 
   logUser!: UsuarioI;
-  datosUsuario!: UsuarioI;
+  datosUsuario!: ListaUsuariosI;
+  userHead!: number;
   editarForm = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
@@ -36,12 +38,12 @@ export class EditarComponent implements OnInit {
   errorMsg: any = "";
 
   ngOnInit(): void {
-
+    this.checkLocalStorage();
     let usuarioId = this.activateRoute.snapshot.paramMap.get('id')!;
 
     this.api.getUser(usuarioId).subscribe(data => {
       console.log(data);
-      this.datosUsuario = data;
+      this.datosUsuario = data.data[ parseInt(usuarioId)-1];
       this.editarForm.setValue({
         'id': usuarioId,
         'name': this.datosUsuario.name,
@@ -53,8 +55,31 @@ export class EditarComponent implements OnInit {
       })
 
 
-    })
+    });
   }
+
+
+  checkLocalStorage() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      console.log(token);
+      this.api.getUserByEmail(token).subscribe(data => {
+        console.log(data);
+        if (data.status == 400) {
+          localStorage.clear();
+          this.router.navigate(['login']);
+        } else {
+          this.logUser = data.usuario;
+          this.userHead = this.logUser.role_id;
+        }
+
+      });
+    } else {
+      this.router.navigate(['login']);
+
+    }
+  }
+
 
   postForm(form: UsuarioI) {
     this.api.putUsuario(form).subscribe(data => {
@@ -86,7 +111,7 @@ export class EditarComponent implements OnInit {
   }
 
   salir() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['listado/usuarios']);
   }
 
 

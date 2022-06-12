@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListaApiUsuariosI } from 'src/app/modelos/listaApiUsuarios.interface';
 import { ListaUsuariosI } from 'src/app/modelos/listaUsuario.interface';
 import { UsuarioI } from 'src/app/modelos/usuario.interface';
 import { ApiService } from 'src/app/servicios/api/api.service';
@@ -15,6 +16,7 @@ export class ListadoUsuariosComponent implements OnInit {
   logUser!: UsuarioI;
   userHead!: number;
   user!:UsuarioI;
+  respuesta!:ListaApiUsuariosI;
 
   constructor(private api: ApiService, private router: Router, private activateRoute: ActivatedRoute) { }
 
@@ -48,11 +50,20 @@ export class ListadoUsuariosComponent implements OnInit {
 
 
   getUsuarios(){
-    this.api.getAllUsers(5).subscribe(data=>{
-      this.usuarios = data;
+    this.api.getAllUsers(5, "").subscribe(data=>{
+      this.usuarios = data.data;
+      this.respuesta = data;
       console.log(data);
     });
   }
+  getUsuariosPaginacion(url:string){
+    this.api.getAllUsers(5,url).subscribe(data=>{
+      this.usuarios = data.data;
+      this.respuesta = data;
+      console.log(data);
+    })
+  }
+
   editarUsuario(id:string){
     console.log(id);
     this.router.navigate(['editar',id]);

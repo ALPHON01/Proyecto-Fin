@@ -12,6 +12,7 @@ import { LigaI } from 'src/app/modelos/liga.interface';
 import { EquipoI } from 'src/app/modelos/equipo.interface';
 import { JornadaI } from 'src/app/modelos/jornada.interface';
 import { EntrenamientoI } from 'src/app/modelos/entrenamiento.interface';
+import { ListaApiUsuariosI } from 'src/app/modelos/listaApiUsuarios.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +29,18 @@ export class ApiService {
       return this.http.post<ResponseI>(direccion,form);
     }
 
-    getAllUsers(paginate:number):Observable<ListaUsuariosI[]>{
-      let direccion = this.url+"/users";
-      return this.http.get<ListaUsuariosI[]>(direccion);
+    getAllUsers(paginate:number,url:string){
+      let direccion = this.url+"/users/"+paginate;
+      if (url != "") {
+        direccion = url;
+      }
+
+      return this.http.get<ListaApiUsuariosI>(direccion);
     }
 
-    getUser(id:string):Observable<UsuarioI>{
+    getUser(id:string){
       let direccion = this.url+"/users/"+id;
-      return this.http.get<UsuarioI>(direccion);
+      return this.http.get<ListaApiUsuariosI>(direccion);
     }
 
     putUsuario(form:UsuarioI):Observable<ResponseI>{
@@ -154,7 +159,7 @@ export class ApiService {
       return this.http.get<any>("https://api-football-standings.azharimm.site/leagues");
     }
     getApiInformation(ligaId:string){
-      return this.http.get<any>("https://api-football-standings.azharimm.site/leagues/"+ligaId+"/standings?season=2020&sort=asc");
+      return this.http.get<any>("https://api-football-standings.azharimm.site/leagues/"+ligaId+"/standings?season=2021&sort=asc");
     }
 
 

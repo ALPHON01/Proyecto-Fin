@@ -4,7 +4,9 @@ export interface ListaUsuariosI{
   surname:string;
   email:string;
   fecha_nac:string;
-  role_id:string;
+  role_id:number;
+  password:string;
+
 
 
 }

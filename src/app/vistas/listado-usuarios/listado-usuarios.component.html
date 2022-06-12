@@ -29,13 +29,26 @@
           <td>{{usuario.surname}}</td>
           <td>{{usuario.email}}</td>
           <td>{{usuario.fecha_nac}}</td>
-          <td>{{usuario.role_id}}</td>
+          <td *ngIf="usuario.role_id==1">Admin</td>
+          <td *ngIf="usuario.role_id==2">Entrenador</td>
+          <td *ngIf="usuario.role_id==3">Cliente</td>
           <td>
             <button type="button" class="btn btn-primary" (click)="editarUsuario(usuario.id)">Editar</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="row">
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link"*ngIf="respuesta.prev_page_url!=null" (click)="getUsuariosPaginacion(respuesta.prev_page_url)">&laquo;</a></li>
+        <li class="page-item"><a class="page-link active">{{respuesta.current_page}}</a></li>
+        <li class="page-item"><a class="page-link" (click)="getUsuariosPaginacion(respuesta.next_page_url)">&raquo;</a></li>
+      </ul>
+    </nav>
+
   </div>
 </div>
   <app-footer></app-footer>
