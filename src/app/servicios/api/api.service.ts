@@ -162,6 +162,9 @@ export class ApiService {
       return this.http.get<any>("https://api-football-standings.azharimm.site/leagues/"+ligaId+"/standings?season=2021&sort=asc");
     }
 
-
+    postFiltrado(form:UsuarioI){
+      let direccion = this.url+"/usuario/filtrar";
+      return this.http.post<any>(direccion,form);
+    }
 
 }

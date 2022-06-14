@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListaApiUsuariosI } from 'src/app/modelos/listaApiUsuarios.interface';
 import { ListaUsuariosI } from 'src/app/modelos/listaUsuario.interface';
 import { UsuarioI } from 'src/app/modelos/usuario.interface';
+import { AlertasService } from 'src/app/servicios/alertas/alertas.service';
 import { ApiService } from 'src/app/servicios/api/api.service';
 
 @Component({
@@ -17,12 +19,23 @@ export class ListadoUsuariosComponent implements OnInit {
   userHead!: number;
   user!:UsuarioI;
   respuesta!:ListaApiUsuariosI;
+  buscaForm = new FormGroup({
+    name: new FormControl(''),
+    surname: new FormControl(''),
+    email: new FormControl(''),
+  });
 
-  constructor(private api: ApiService, private router: Router, private activateRoute: ActivatedRoute) { }
+  constructor(private api: ApiService, private router: Router, private activateRoute: ActivatedRoute,private alertas:AlertasService) { }
 
   ngOnInit(): void {
     this.checkLocalStorage();
     this.getUsuarios();
+    this.buscaForm.setValue({
+      'name': this.user.name,
+      'surname': this.user.surname,
+      'email': this.user.email,
+    })
+
   }
 
 
@@ -73,6 +86,17 @@ export class ListadoUsuariosComponent implements OnInit {
   }
   salir() {
     this.router.navigate(['dashboard']);
+  }
+  postForm(form:UsuarioI){
+    console.log(form);
+    this.api.postFiltrado(form).subscribe(data=>{
+      console.log(data);
+      if (data.status == 400) {
+        this.alertas.showError("Indique información en al menos un campo","Error");
+      }else{
+        this.usuarios = data;
+      }
+    })
   }
 
 }

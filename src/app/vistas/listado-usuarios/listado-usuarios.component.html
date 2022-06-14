@@ -5,10 +5,28 @@
   </div>
   <div class="row">
     <div class="col"><button class="btn btn-primary" (click)="nuevoUsuario()">Nuevo Usuario</button></div>
-    <div class="col"><button class="btn btn-dark mt-1" type="button" (click)="salir()">Volver</button></div>
-
-
+    <div class="col"><button class="btn btn-dark" type="button" (click)="salir()">Volver</button></div>
   </div>
+
+    <div class="row">
+    <form class="form-inline" [formGroup]="buscaForm" (ngSubmit)="postForm(buscaForm.value)">
+      <div class="form-group ">
+        <label for="staticEmail2" class="sr-only">Nombre</label>
+        <input type="text" class="form-control " formControlName="name" id="" placeholder="Nombre">
+      </div>
+      <div class="form-group ">
+        <label for="staticEmail2" class="sr-only">Apellidos</label>
+        <input type="text" class="form-control" formControlName="surname" id="" placeholder="Apellidos">
+      </div>
+      <div class="form-group ">
+        <label for="staticEmail2" class="sr-only">Email</label>
+        <input type="text" class="form-control" formControlName="email" id="" placeholder="Email">
+      </div>
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+  </div>
+
+
   <div class="well">
     <table class="table">
       <thead>
@@ -43,12 +61,14 @@
 
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link"*ngIf="respuesta.prev_page_url!=null" (click)="getUsuariosPaginacion(respuesta.prev_page_url)">&laquo;</a></li>
+        <li class="page-item"><a class="page-link" *ngIf="respuesta.prev_page_url!=null"
+            (click)="getUsuariosPaginacion(respuesta.prev_page_url)">&laquo;</a></li>
         <li class="page-item"><a class="page-link active">{{respuesta.current_page}}</a></li>
-        <li class="page-item"><a class="page-link" (click)="getUsuariosPaginacion(respuesta.next_page_url)">&raquo;</a></li>
+        <li class="page-item"><a class="page-link" (click)="getUsuariosPaginacion(respuesta.next_page_url)">&raquo;</a>
+        </li>
       </ul>
     </nav>
 
   </div>
 </div>
-  <app-footer></app-footer>
+<app-footer></app-footer>
