@@ -166,5 +166,8 @@ export class ApiService {
       let direccion = this.url+"/usuario/filtrar";
       return this.http.post<any>(direccion,form);
     }
-
+    getEquiposEntrenador(id:number){
+      let direccion = this.url+"/equipos/entrenador/"+id;
+      return this.http.get<ListaEquipoI[]>(direccion);
+    }
 }

@@ -55,7 +55,9 @@ export class HeaderComponent implements OnInit {
   listadoApi(){
     this.router.navigate(['listado/api']);
   }
-
+  misEquiposEntrenador(){
+    this.router.navigate(['listado/misequipos/entrenador']);
+  }
 
 
 }

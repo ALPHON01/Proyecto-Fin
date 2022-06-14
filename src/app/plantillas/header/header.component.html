@@ -20,7 +20,7 @@
 
           <div class="navbar-nav" *ngIf="userRole==2">
             <a  class="nav-item nav-link active" *ngIf="logUser">{{logUser.name}}</a>
-            <a  class="nav-item nav-link active" *ngIf="logUser"(click)="misEquipos()">Mis Equipos</a>
+            <a  class="nav-item nav-link active" *ngIf="logUser"(click)="misEquiposEntrenador()">Mis Equipos</a>
             <a  class="nav-item nav-link active" *ngIf="logUser" (click)="misEntrenamientos()">Entrenamientos</a>
             <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listarJornadas()">Jornadas</a>
             <a  class="nav-item nav-link active" *ngIf="logUser" (click)="listadoApi()">Resultados</a>

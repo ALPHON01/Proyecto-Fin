@@ -19,6 +19,7 @@ import { ListaMisEntrenamientosComponent } from './vistas/lista-mis-entrenamient
 import { NuevoEntrenamientoComponent } from './vistas/nuevo-entrenamiento/nuevo-entrenamiento.component';
 import { ListaApiComponent } from './vistas/lista-api/lista-api.component';
 import { ListaApiInfoComponent } from './vistas/lista-api-info/lista-api-info.component';
+import { ListadoMisEquiposEntrenadorComponent } from './vistas/listado-mis-equipos-entrenador/listado-mis-equipos-entrenador.component';
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
   {path:'login',component:LoginComponent,},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'listado/jornadas',component:ListadoJornadasComponent},
   {path:'nuevo/jornadas',component:NuevoJornadaComponent},
   {path:'listado/misequipos',component:ListadoMisEquiposComponent},
+  {path:'listado/misequipos/entrenador',component:ListadoMisEquiposEntrenadorComponent},
   {path:'nuevo/solicitudes',component:NuevoSolicitudComponent},
   {path:'buscar/equipo',component:BuscarEquipoComponent},
   {path:'listado/entrenamientos',component:ListaMisEntrenamientosComponent},
@@ -59,6 +61,7 @@ export const routingComponent = [LoginComponent,
   DashboardComponent, EditarComponent, NuevoComponent, MiPerfilComponent,
   ListadoUsuariosComponent, ListadoSolicitudesComponent,ListadoEquiposComponent,
   NuevoEquipoComponent, ListadoJornadasComponent, NuevoJornadaComponent,ListadoMisEquiposComponent,
-  NuevoSolicitudComponent,BuscarEquipoComponent,ListaMisEntrenamientosComponent,NuevoEntrenamientoComponent, ListaApiComponent,ListaApiInfoComponent
+  NuevoSolicitudComponent,BuscarEquipoComponent,ListaMisEntrenamientosComponent,NuevoEntrenamientoComponent,
+   ListaApiComponent,ListaApiInfoComponent, ListadoMisEquiposEntrenadorComponent
 
 ]

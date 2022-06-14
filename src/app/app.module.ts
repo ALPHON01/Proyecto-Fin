@@ -26,6 +26,7 @@ import { ListaMisEntrenamientosComponent } from './vistas/lista-mis-entrenamient
 import { NuevoEntrenamientoComponent } from './vistas/nuevo-entrenamiento/nuevo-entrenamiento.component';
 import { ListaApiComponent } from './vistas/lista-api/lista-api.component';
 import { ListaApiInfoComponent } from './vistas/lista-api-info/lista-api-info.component';
+import { ListadoMisEquiposEntrenadorComponent } from './vistas/listado-mis-equipos-entrenador/listado-mis-equipos-entrenador.component';
 
 
 
@@ -49,6 +50,7 @@ import { ListaApiInfoComponent } from './vistas/lista-api-info/lista-api-info.co
     NuevoEntrenamientoComponent,
     ListaApiComponent,
     ListaApiInfoComponent,
+    ListadoMisEquiposEntrenadorComponent,
 
 
   ],
