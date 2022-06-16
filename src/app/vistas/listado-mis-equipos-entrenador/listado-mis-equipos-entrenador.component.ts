@@ -22,7 +22,7 @@ export class ListadoMisEquiposEntrenadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkLocalStorage();
-    this.getEquipos();
+
 
   }
   checkLocalStorage() {
@@ -37,6 +37,7 @@ export class ListadoMisEquiposEntrenadorComponent implements OnInit {
         } else {
           this.logUser = data.usuario;
           this.userHead = this.logUser.role_id;
+          this.getEquipos();
         }
 
       });
